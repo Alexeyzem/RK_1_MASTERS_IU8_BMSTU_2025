@@ -1,7 +1,8 @@
 """
-@brief Message templates for IT Infrastructure Analysis
+@brief Message templates for commercial departments Analysis
 Contains all user-facing messages and logging templates
 """
+
 
 class LogMessages:
     """
@@ -10,27 +11,36 @@ class LogMessages:
     """
 
     # System initialization messages
-    SYSTEM_START = "IT Infrastructure Analysis System initialization started"
-    SYSTEM_READY = "IT Infrastructure Analysis System ready"
+    SYSTEM_START = "Commercial Department System initialization started"
+    SYSTEM_READY = "Commercial Department System ready"
     DATA_LOAD_START = "Starting data loading process from JSON file"
+    DATA_PROCESSING_START = "Starting data processing"
     DATA_LOAD_SUCCESS = "Data successfully loaded from file: {}"
     DATA_LOAD_ERROR = "Error loading data from file: {} - {}"
+
+    # Project analysis messages
+    PROJECT_COUNT = 'Total project count: {}'
+    PROJECT_PROFIT_CALCULATION = 'Calculating average ROI and profit'
+
+    # Personal analysis messages
+    PERSONAL_COUNT = 'Total person count: {}'
+    PERSONAL_REVENUE_PER_EMPLOYEE = 'Calculating revenue per employee'
+    PERSONAL_CORRELATION = 'Calculating correlation between salary and performance_score'
+
+    # Language Skills
+    LANGUAGE_ANALYSIS = 'Language complex analysis'
+
+    # Clients analyses
+    CLIENT_PROJECT_ANALYSIS = 'Client project analysis'
+
+    # ROI Up analyses
+    ROI_ANALYSIS = 'ROI up analysis'
 
     # Analysis process messages
     ANALYSIS_START = "Starting {} analysis"
     ANALYSIS_COMPLETE = "{} analysis completed successfully"
     ANALYSIS_ERROR = "Error during {} analysis: {}"
 
-    # Data processing messages
-    DATA_PROCESSING_START = "Starting data processing for {}"
-    DATA_FILTERING_START = "Filtering IT equipment from dataset"
-    DATA_TRANSFORMATION_START = "Starting data transformation"
-
-    # Equipment analysis messages
-    EQUIPMENT_COUNT = "Total IT equipment identified: {} units"
-    EQUIPMENT_COST_CALCULATION = "Calculating total equipment costs"
-    UTILIZATION_CALCULATION = "Calculating equipment utilization metrics"
-    MAINTENANCE_COST_CALCULATION = "Calculating maintenance costs"
 
 class ReportMessages:
     """
@@ -39,22 +49,12 @@ class ReportMessages:
     """
 
     # Section headers
-    INVENTORY_HEADER = "EQUIPMENT INVENTORY ANALYSIS"
-    UTILIZATION_HEADER = "EQUIPMENT UTILIZATION ANALYSIS"
-    COST_HEADER = "COST ANALYSIS"
-    REPLACEMENT_HEADER = "EQUIPMENT REPLACEMENT PLANNING"
-    OPTIMIZATION_HEADER = "INFRASTRUCTURE OPTIMIZATION"
+    PROJECT_PROFIT_HEADER = "PROFIT ANALYSIS"
+    PERSON_HEADER = "PERSON ANALYSIS"
+    LANGUAGE_HEADER = "LANGUAGE ANALYSIS"
+    CLIENT_HEADER = "CLIENT ANALYSIS"
+    ROI_HEADER = "ROI UP ANALYSIS"
 
-    # Results messages
-    TOTAL_EQUIPMENT_COUNT = "Total IT equipment identified: {} units"
-    TOTAL_EQUIPMENT_COST = "Total IT assets value: {:,.0f} RUB"
-    AVERAGE_UTILIZATION = "Average equipment utilization rate: {:.1f}%"
-    ANNUAL_MAINTENANCE_COST = "Annual maintenance costs: {:,.0f} RUB"
-
-    # Recommendation messages
-    CONSOLIDATION_RECOMMENDATION = "Recommended consolidation measures"
-    COST_SAVINGS_POTENTIAL = "Potential annual savings: {:,.0f} RUB"
-    REPLACEMENT_PRIORITY = "Equipment replacement priority list generated"
 
 class ErrorMessages:
     """

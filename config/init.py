@@ -1,18 +1,15 @@
 """
-@brief Configuration package for IT infrastructure analysis
+@brief Configuration package for commercial department analysis
 Contains enums and message templates for system configuration
 """
 
-from .enums import EquipmentStatus, DepartmentType, EquipmentType, AnalysisPriority, UtilizationLevel
-from .messages import LogMessages, ReportMessages, ErrorMessages
+from messages import LogMessages, ReportMessages, ErrorMessages
+from helper_const import Language, Levels
 
 __all__ = [
-    'EquipmentStatus',
-    'DepartmentType',
-    'EquipmentType',
-    'AnalysisPriority',
-    'UtilizationLevel',
     'LogMessages',
     'ReportMessages',
-    'ErrorMessages'
+    'ErrorMessages',
+    'Language',
+    'Levels'
 ]

@@ -1,0 +1,9 @@
+2025-10-18 18:45:52,127 - ClientAnalyzer - INFO - Commercial Department System initialization started
+2025-10-18 18:45:52,127 - ClientAnalyzer - INFO - Starting data loading process from JSON file
+2025-10-18 18:45:52,141 - ClientAnalyzer - INFO - Data successfully loaded from file: company.json
+2025-10-18 18:45:52,141 - ClientAnalyzer - INFO - Starting data processing
+2025-10-18 18:45:52,143 - ClientAnalyzer - INFO - Total project count: 10
+2025-10-18 18:45:52,144 - ClientAnalyzer - INFO - Total person count: 26
+2025-10-18 18:45:52,163 - ClientAnalyzer - INFO - Starting clients analysis
+2025-10-18 18:45:52,163 - ClientAnalyzer - INFO - Client project analysis
+2025-10-18 18:45:52,165 - ClientAnalyzer - INFO - clients analysis completed successfully

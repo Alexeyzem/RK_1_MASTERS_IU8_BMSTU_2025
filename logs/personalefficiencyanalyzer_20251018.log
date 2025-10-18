@@ -1,0 +1,10 @@
+2025-10-18 18:45:52,093 - PersonalEfficiencyAnalyzer - INFO - Commercial Department System initialization started
+2025-10-18 18:45:52,093 - PersonalEfficiencyAnalyzer - INFO - Starting data loading process from JSON file
+2025-10-18 18:45:52,106 - PersonalEfficiencyAnalyzer - INFO - Data successfully loaded from file: company.json
+2025-10-18 18:45:52,106 - PersonalEfficiencyAnalyzer - INFO - Starting data processing
+2025-10-18 18:45:52,109 - PersonalEfficiencyAnalyzer - INFO - Total project count: 10
+2025-10-18 18:45:52,109 - PersonalEfficiencyAnalyzer - INFO - Total person count: 26
+2025-10-18 18:45:52,162 - PersonalEfficiencyAnalyzer - INFO - Starting personal efficiency analysis
+2025-10-18 18:45:52,162 - PersonalEfficiencyAnalyzer - INFO - Calculating revenue per employee
+2025-10-18 18:45:52,162 - PersonalEfficiencyAnalyzer - INFO - Calculating correlation between salary and performance_score
+2025-10-18 18:45:52,163 - PersonalEfficiencyAnalyzer - INFO - personal efficiency analysis completed successfully

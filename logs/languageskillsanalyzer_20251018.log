@@ -1,0 +1,9 @@
+2025-10-18 18:45:52,109 - LanguageSkillsAnalyzer - INFO - Commercial Department System initialization started
+2025-10-18 18:45:52,109 - LanguageSkillsAnalyzer - INFO - Starting data loading process from JSON file
+2025-10-18 18:45:52,123 - LanguageSkillsAnalyzer - INFO - Data successfully loaded from file: company.json
+2025-10-18 18:45:52,123 - LanguageSkillsAnalyzer - INFO - Starting data processing
+2025-10-18 18:45:52,126 - LanguageSkillsAnalyzer - INFO - Total project count: 10
+2025-10-18 18:45:52,127 - LanguageSkillsAnalyzer - INFO - Total person count: 26
+2025-10-18 18:45:52,163 - LanguageSkillsAnalyzer - INFO - Starting language skills analysis
+2025-10-18 18:45:52,163 - LanguageSkillsAnalyzer - INFO - Language complex analysis
+2025-10-18 18:45:52,163 - LanguageSkillsAnalyzer - INFO - language skills analysis completed successfully

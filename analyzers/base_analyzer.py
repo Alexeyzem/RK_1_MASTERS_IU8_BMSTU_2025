@@ -1,5 +1,5 @@
 """
-@brief Base analyzer class for IT infrastructure analysis
+@brief Base analyzer class for Commercial Departments analysis
 Provides common functionality and interface for all analyzers
 """
 
@@ -8,9 +8,10 @@ import json
 from utils.logger import analysis_logger
 from config.messages import LogMessages
 
+
 class BaseAnalyzer:
     """
-    @brief Base class for all IT infrastructure analyzers
+    @brief Base class for all commercial analyzers
     Implements common data loading and processing functionality
     """
 
@@ -26,9 +27,11 @@ class BaseAnalyzer:
         self.analysis_name = analysis_name
         self.logger = analysis_logger.get_analysis_logger(analysis_name)
         self.data = None
-        self.it_equipment_dataframe = None
+        self.projects = None
 
         self.logger.info(LogMessages.SYSTEM_START)
+        self.department_id = 17
+        self.person_count = 0
         self._load_data()
         self._setup_dataframes()
 
@@ -59,42 +62,46 @@ class BaseAnalyzer:
         if not self.data:
             return
 
-        # Create equipment DataFrame
-        equipment_records = []
-        for equipment_item in self.data.get('equipment', []):
-            equipment_record = {
-                'equipment_id': equipment_item['equipment_id'],
-                'name': equipment_item['name'],
-                'type': equipment_item['type'],
-                'department_id': equipment_item['department_id'],
-                'department_name': equipment_item['department_name'],
-                'model': equipment_item['specifications']['model'],
-                'manufacturer': equipment_item['specifications']['manufacturer'],
-                'purchase_date': equipment_item['purchase_info']['purchase_date'],
-                'cost': equipment_item['purchase_info']['cost'],
-                'warranty_end_date': equipment_item['purchase_info']['warranty_end_date'],
-                'status': equipment_item['operational_info']['status'],
-                'efficiency': equipment_item['operational_info']['efficiency_percentage'],
-                'maintenance_cost': equipment_item['operational_info']['maintenance_cost_per_month'],
-                'utilization_rate': equipment_item['utilization']['utilization_rate'],
-                'hours_used_daily': equipment_item['utilization']['hours_used_daily']
-            }
-            equipment_records.append(equipment_record)
+        # Create projects DataFrame
+        project_records = []
+        for project in self.data.get('projects', []):
+            for department in project.get('participating_departments', []):
+                if department.get('department_id') == self.department_id:
+                    project_record = {
+                        'project_id': project['project_id'],
+                        'name': project['name'],
+                        'description': project['description'],
+                        'status': project['status'],
+                        'start_date': project['timeline']['start_date'],
+                        'end_date': project['timeline']['end_date'],
+                        'duration_days': project['timeline']['duration_days'],
+                        'budget': project['financials']['budget'],
+                        'actual_cost': project['financials']['actual_cost'],
+                        'profit': project['financials']['profit'],
+                        'roi_percentage': project['financials']['roi_percentage'],
+                        'completion_percentage': project['metrics']['completion_percentage'],
+                        'risk_level': project['metrics']['risk_level'],
+                        'priority': project['metrics']['priority'],
+                    }
+                    project_records.append(project_record)
+                    break
 
-        equipment_dataframe = pd.DataFrame(equipment_records)
+        project_dataframe = pd.DataFrame(project_records)
 
         # Convert date columns to datetime
-        equipment_dataframe['purchase_date'] = pd.to_datetime(equipment_dataframe['purchase_date'])
-        equipment_dataframe['warranty_end_date'] = pd.to_datetime(equipment_dataframe['warranty_end_date'])
+        project_dataframe['start_date'] = pd.to_datetime(project_dataframe['start_date'])
+        project_dataframe['end_date'] = pd.to_datetime(project_dataframe['end_date'])
 
-        # Filter IT equipment
-        self.logger.info(LogMessages.DATA_FILTERING_START)
-        it_equipment_filter_pattern = 'Сервер|Компьютер|Ноутбук|Монитор|Принтер|Сканер|Сетевое'
-        self.it_equipment_dataframe = equipment_dataframe[
-            equipment_dataframe['type'].str.contains(it_equipment_filter_pattern, na=False)
-        ]
+        self.projects = project_dataframe
+        self.logger.info(LogMessages.PROJECT_COUNT.format(len(self.projects)))
 
-        self.logger.info(LogMessages.EQUIPMENT_COUNT.format(len(self.it_equipment_dataframe)))
+        person_count = 0
+        for employee in self.data.get('employees', []):
+            if employee.get('work_info')['department_id'] == self.department_id:
+                person_count += 1
+
+        self.logger.info(LogMessages.PERSONAL_COUNT.format(person_count))
+        self.person_count = person_count
 
     def execute_analysis(self):
         """

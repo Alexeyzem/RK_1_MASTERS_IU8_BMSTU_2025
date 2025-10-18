@@ -1,23 +1,24 @@
 """
-@brief Main execution script for IT Infrastructure Analysis System
+@brief Main execution script for commercial department Analysis System
 Orchestrates all analysis modules and generates comprehensive reports
 """
 
 import os
 import sys
-from analyzers.inventory_analyzer import InventoryAnalyzer
-from analyzers.utilization_analyzer import UtilizationAnalyzer
-from analyzers.cost_analyzer import CostAnalyzer
-from analyzers.replacement_analyzer import ReplacementAnalyzer
-from analyzers.optimization_analyzer import OptimizationAnalyzer
+from analyzers.projects_metrics_analyzer import ProjectsMetricsAnalyzer
+from analyzers.personal_analyzer import PersonalEfficiencyAnalyzer
+from analyzers.language_analyzer import LanguageSkillsAnalyzer
+from analyzers.client_analyzer import ClientAnalyzer
+from analyzers.roi_up_analyzer import ROIUpAnalyzer
 from config.messages import LogMessages, ReportMessages
 
-class ITInfrastructureAnalysisOrchestrator:
+
+class CommercialDepartmentAnalysisOrchestrator:
     """
-    @brief Main orchestrator for IT infrastructure analysis system
+    @brief Main orchestrator for commercial departments analysis system
     Coordinates execution of all analysis modules and compiles results
     """
-    
+
     def __init__(self, json_data_file_path):
         """
         @brief Initialize analysis orchestrator with data source
@@ -27,16 +28,16 @@ class ITInfrastructureAnalysisOrchestrator:
         """
         self.json_data_file_path = json_data_file_path
         self.analysis_results_collection = {}
-        
+
         # Verify file exists before initializing analyzers
         self._verify_data_file_exists()
 
         # Initialize analyzer instances
-        self.inventory_analysis_module = InventoryAnalyzer(json_data_file_path)
-        self.utilization_analysis_module = UtilizationAnalyzer(json_data_file_path)
-        self.cost_analysis_module = CostAnalyzer(json_data_file_path)
-        self.replacement_analysis_module = ReplacementAnalyzer(json_data_file_path)
-        self.optimization_analysis_module = OptimizationAnalyzer(json_data_file_path)
+        self.projects_metric_module = ProjectsMetricsAnalyzer(json_data_file_path)
+        self.person_efficiency_module = PersonalEfficiencyAnalyzer(json_data_file_path)
+        self.language_analyzer = LanguageSkillsAnalyzer(json_data_file_path)
+        self.clients_analyzer = ClientAnalyzer(json_data_file_path)
+        self.roi_up_analyzer = ROIUpAnalyzer(json_data_file_path)
 
     def _verify_data_file_exists(self):
         """
@@ -51,35 +52,34 @@ class ITInfrastructureAnalysisOrchestrator:
 
     def execute_comprehensive_analysis(self):
         """
-        @brief Execute complete IT infrastructure analysis
+        @brief Execute complete commercial department analysis
         Runs all analysis modules and compiles comprehensive results
 
         @return: Dictionary containing all analysis results
         """
-        print("INITIATING COMPREHENSIVE IT INFRASTRUCTURE ANALYSIS")
+        print("INITIATING COMPREHENSIVE COMMERCIAL DEPARTMENT ANALYSIS")
         print("=" * 70)
 
         try:
-            # Execute all analysis modules
-            print("\nEXECUTING EQUIPMENT INVENTORY ANALYSIS...")
-            inventory_analysis_results = self.inventory_analysis_module.execute_analysis()
-            self.analysis_results_collection['inventory'] = inventory_analysis_results
+            print("INITIATING PROJECT ANALYSIS")
+            profit_analysis_result = self.projects_metric_module.execute_analysis()
+            self.analysis_results_collection['profit_analysis_result'] = profit_analysis_result
 
-            print("\nEXECUTING UTILIZATION EFFICIENCY ANALYSIS...")
-            utilization_analysis_results = self.utilization_analysis_module.execute_analysis()
-            self.analysis_results_collection['utilization'] = utilization_analysis_results
+            print("INITIATING PERSONAL ANALYSIS")
+            personal_analysis_result = self.person_efficiency_module.execute_analysis()
+            self.analysis_results_collection['personal_analysis_result'] = personal_analysis_result
 
-            print("\nEXECUTING COST ANALYSIS...")
-            cost_analysis_results = self.cost_analysis_module.execute_analysis()
-            self.analysis_results_collection['cost'] = cost_analysis_results
+            print("INITIATING LANGUAGE ANALYSIS")
+            language_analysis_result = self.language_analyzer.execute_analysis()
+            self.analysis_results_collection['language_analysis_result'] = language_analysis_result
 
-            print("\nEXECUTING REPLACEMENT PLANNING ANALYSIS...")
-            replacement_analysis_results = self.replacement_analysis_module.execute_analysis()
-            self.analysis_results_collection['replacement'] = replacement_analysis_results
+            print("INITIATING CLIENT ANALYSIS")
+            client_analysis_result = self.clients_analyzer.execute_analysis()
+            self.analysis_results_collection['client_analysis_result'] = client_analysis_result
 
-            print("\nEXECUTING OPTIMIZATION ANALYSIS...")
-            optimization_analysis_results = self.optimization_analysis_module.execute_analysis()
-            self.analysis_results_collection['optimization'] = optimization_analysis_results
+            print("INITIATING ROI UP ANALYSIS")
+            roi_up_analysis_result = self.roi_up_analyzer.execute_analysis()
+            self.analysis_results_collection['roi_up_analysis_result'] = roi_up_analysis_result
 
             # Generate final comprehensive report
             self._generate_comprehensive_summary_report()
@@ -96,30 +96,47 @@ class ITInfrastructureAnalysisOrchestrator:
         Compiles key findings and recommendations from all analyses
         """
         print("\n" + "=" * 70)
-        print("COMPREHENSIVE IT INFRASTRUCTURE ANALYSIS SUMMARY")
+        print("COMPREHENSIVE COMMERCIAL DEPARTMENT ANALYSIS SUMMARY")
         print("=" * 70)
 
         # Extract key metrics from all analyses
-        total_equipment_count = self.analysis_results_collection['inventory']['total_equipment_count']
-        total_equipment_cost = self.analysis_results_collection['inventory']['financial_analysis']['total_cost']
-        average_utilization_rate = self.analysis_results_collection['utilization']['basic_metrics']['average_utilization']
-        annual_maintenance_cost = self.analysis_results_collection['cost']['maintenance_analysis']['annual_total']
-        low_utilization_count = self.analysis_results_collection['utilization']['low_utilization_equipment']['count']
-        expiring_warranty_count = self.analysis_results_collection['replacement']['warranty_analysis']['expiring_equipment_count']
-        potential_annual_savings = self.analysis_results_collection['optimization']['economic_analysis']['total_annual_savings']
+        total_profit = self.analysis_results_collection['profit_analysis_result'].get('total_profit')
+        average_roi = self.analysis_results_collection['profit_analysis_result'].get('average_roi')
+
+        revenue_per_employee = self.analysis_results_collection['personal_analysis_result'].get('revenue-per-employee')
+        corr = self.analysis_results_collection['personal_analysis_result'].get('correlation')
+
+        lang_distribution = self.analysis_results_collection['language_analysis_result'].get('distribution')
+        need_upgrade_language = self.analysis_results_collection['language_analysis_result'].get('needs')
+        person_with_two_language = self.analysis_results_collection['language_analysis_result'].get('persons-who-know')
+
+        priority_risk = self.analysis_results_collection['client_analysis_result'].get('priorities-risk')
+        ratio = self.analysis_results_collection['client_analysis_result'].get('ratio')
+        good_projects = self.analysis_results_collection['client_analysis_result'].get('projects')
+
+        potential_profit = self.analysis_results_collection['roi_up_analysis_result'].get('potential_profit')
 
         print(f"\nKEY PERFORMANCE INDICATORS:")
-        print(f"• Total IT Equipment: {total_equipment_count} units")
-        print(f"• Total Asset Value: {total_equipment_cost:,.0f} RUB")
-        print(f"• Average Utilization Rate: {average_utilization_rate:.1f}%")
-        print(f"• Annual Maintenance Cost: {annual_maintenance_cost:,.0f} RUB")
-        print(f"• Underutilized Equipment: {low_utilization_count} units")
-        print(f"• Equipment with Expiring Warranty: {expiring_warranty_count} units")
-        print(f"• Potential Annual Savings: {potential_annual_savings:,.0f} RUB")
+        print(f"Total profit: {total_profit}")
+        print(f"Average ROI: {average_roi}")
+
+        print(f"Revenue per employee: {revenue_per_employee}")
+        print(f"Correlation: {corr}")
+
+        print(f"Language distribution: {lang_distribution}")
+        print(f"Need upgrade: {need_upgrade_language}")
+        print(f"Person with two language: {person_with_two_language}")
+
+        print(f"Priority risk: {priority_risk}")
+        print(f"Ratio high/critical to low priority: {ratio}")
+        print(f"Projects with high risk and profit: {good_projects}")
+
+        print(f"If roi up for 5%, potential profit: {potential_profit}")
+
 
 def main():
     """
-    @brief Main execution function for IT Infrastructure Analysis
+    @brief Main execution function for Commercial department Analysis
     Handles command line arguments and orchestrates analysis execution
     """
     # Configuration - update this path to match your JSON file
@@ -127,8 +144,8 @@ def main():
 
     try:
         # Initialize and execute analysis
-        analysis_orchestrator = ITInfrastructureAnalysisOrchestrator(company_data_json_file_path)
-        comprehensive_analysis_results = analysis_orchestrator.execute_comprehensive_analysis()
+        analysis_orchestrator = CommercialDepartmentAnalysisOrchestrator(company_data_json_file_path)
+        analysis_orchestrator.execute_comprehensive_analysis()
 
         print(f"\nANALYSIS COMPLETED SUCCESSFULLY!")
         print(f"Log files generated in 'logs/' directory")
@@ -140,6 +157,7 @@ def main():
     except Exception as main_execution_error:
         print(f"\nCRITICAL ERROR DURING ANALYSIS EXECUTION: {str(main_execution_error)}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,18 @@
+2025-10-18 18:45:52,075 - ProjectProfit - INFO - Commercial Department System initialization started
+2025-10-18 18:45:52,075 - ProjectProfit - INFO - Starting data loading process from JSON file
+2025-10-18 18:45:52,088 - ProjectProfit - INFO - Data successfully loaded from file: company.json
+2025-10-18 18:45:52,088 - ProjectProfit - INFO - Starting data processing
+2025-10-18 18:45:52,092 - ProjectProfit - INFO - Total project count: 10
+2025-10-18 18:45:52,092 - ProjectProfit - INFO - Total person count: 26
+2025-10-18 18:45:52,144 - ProjectProfit - INFO - Commercial Department System initialization started
+2025-10-18 18:45:52,144 - ProjectProfit - INFO - Starting data loading process from JSON file
+2025-10-18 18:45:52,158 - ProjectProfit - INFO - Data successfully loaded from file: company.json
+2025-10-18 18:45:52,159 - ProjectProfit - INFO - Starting data processing
+2025-10-18 18:45:52,161 - ProjectProfit - INFO - Total project count: 10
+2025-10-18 18:45:52,162 - ProjectProfit - INFO - Total person count: 26
+2025-10-18 18:45:52,162 - ProjectProfit - INFO - Starting projects_profit analysis
+2025-10-18 18:45:52,162 - ProjectProfit - INFO - Calculating average ROI and profit
+2025-10-18 18:45:52,162 - ProjectProfit - INFO - projects_profit analysis completed successfully
+2025-10-18 18:45:52,165 - ProjectProfit - INFO - Starting roi_up_analyzer analysis
+2025-10-18 18:45:52,165 - ProjectProfit - INFO - ROI up analysis
+2025-10-18 18:45:52,166 - ProjectProfit - INFO - roi_up_analyzer analysis completed successfully

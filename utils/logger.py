@@ -1,5 +1,5 @@
 """
-@brief Custom logger configuration for IT Infrastructure Analysis
+@brief Custom logger configuration for Commercial Department Analysis
 Provides centralized logging functionality with file handlers
 """
 
@@ -7,6 +7,7 @@ import logging
 import os
 from datetime import datetime
 from config.messages import LogMessages
+
 
 class AnalysisLogger:
     """
@@ -80,6 +81,7 @@ class AnalysisLogger:
             print(f"Error creating log file handler: {error}")
 
         return logger
+
 
 # Global logger instance
 analysis_logger = AnalysisLogger()
