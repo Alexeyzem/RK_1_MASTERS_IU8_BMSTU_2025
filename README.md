@@ -68,6 +68,9 @@ project/
 ├── utils/
 │   ├── init.py
 │   └── logger.py
+├── README.md
+├── gen.py
+├── Отчет.docx
 └─ .gitignore
 ```
 
